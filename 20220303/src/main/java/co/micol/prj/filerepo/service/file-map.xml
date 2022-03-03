@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.filerepo.service.FilerepoMapper">
+	
+	<select id="filerepoSelectList" resultType="co.micol.prj.filerepo.vo.FilerepoVO">
+		SELECT *
+		FROM   filerepo
+	</select>
+	
+	<select id="filerepoSelect">
+		SELECT *
+		FROM   filerepo
+		WHERE  id = #{id}
+	</select>
+		
+	<insert id="filerepoInsert">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			SELECT MAX(id) + 1 AS 
+			FROM   filerepo
+		</selectKey>
+		INSERT INTO filerepo
+		VALUES(#{id}, #{writer}, #{enterDate}, #{fname}, #{rname})
+	</insert>
+	
+	<update id="filerepoUpdate">
+	
+	</update>
+	
+	<delete id="filerepoDelete">
+		DELETE 
+		FROM   filerepo
+		WHERE  id = #{id}
+	</delete>
+	
+</mapper>
